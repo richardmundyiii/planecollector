@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Plane
 
 # Create your views here.
 def home(request):
@@ -8,11 +9,9 @@ def about(request):
     return render(request, 'about.html')
 
 def planes_index(request):
-    return render(request, 'planes/index.html', {
-        'planes': planes
-    })
+    planes = Plane.objects.all()
+    return render(request, 'planes/index.html', { 'planes': planes })
 
-planes = [
-    {'tailNumber': 'N3416TW', 'manufacturer': 'Cessna', 'model': '172', 'description': 'Some info here', 'year': 1989},
-    {'tailNumber': 'N91H28Z', 'manufacturer': 'Cirrus', 'model': 'SR22', 'description': 'Some info here', 'year': 2002},
-]
+def plane_detail(request, plane_id):
+    plane = Plane.objects.get(id=plane_id)
+    return render(request, 'planes/detail.html', { 'plane': plane })

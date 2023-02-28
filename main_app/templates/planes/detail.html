@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Plane Details</h1>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ plane.name }}</span>
+    <p>Manufacturer: {{ plane.manufacturer }}</p>
+    <p>Model: {{ plane.model }}</p>
+    <p>Description: {{ plane.description }}</p>
+    {% if plane.year > 0 %}
+    <p>Manufacturing Date: {{ plane.year }}</p>
+    {% else %}
+    <p>Pre-Manufactured</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
