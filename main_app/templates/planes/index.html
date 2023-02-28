@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Plane List</h1>
+
+{% for plane in planes %}
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{ plane.tailNumber }}</span>
+    <p>{{ plane.year }}</p>
+    <p>Manufacturer: {{ plane.manufacturer }}</p>
+    <p>Type: {{ plane.model }}</p>
+    {% if plane.year > 0 %}
+    <p>Year: {{ plane.year }}</p>
+    {% else %}
+    <p>Pre-Manufactured</p>
+    {% endif %}
+  </div>
+</div>
+{% endfor %} {% endblock %}
