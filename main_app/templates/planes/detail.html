@@ -14,6 +14,10 @@
     <p>Pre-Manufactured</p>
     {% endif %}
   </div>
+  <div class="card-action">
+    <a href="{% url 'plane_update' plane.id %}">Edit</a>
+    <a href="{% url 'plane_delete' plane.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}

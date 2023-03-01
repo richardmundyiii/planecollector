@@ -29,8 +29,9 @@
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-            <li><a href="/planes">View All My Planes</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'planes_create' %}">Add a Plane</a></li>
+            <li><a href="{% url 'index' %}">View All My Planes</a></li>
           </ul>
         </div>
       </nav>
