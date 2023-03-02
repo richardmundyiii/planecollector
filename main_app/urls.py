@@ -9,4 +9,5 @@ urlpatterns = [
     path('planes/create/', views.PlaneCreate.as_view(), name='planes_create'),
     path('planes/<int:pk>/update/', views.PlaneUpdate.as_view(), name='plane_update'),
     path('planes/<int:pk>/delete/', views.PlaneDelete.as_view(), name='plane_delete'),
+    path('planes/<int:plane_id>/add_maintenance/', views.add_maintenance, name='add_maintenance')
 ]
