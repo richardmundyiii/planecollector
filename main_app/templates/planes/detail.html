@@ -54,14 +54,58 @@
     </table>
   </div>
 </div>
-<script>
-  const dateEl = document.getElementById("id_date");
-  // M is Materialize's global variable
-  M.Datepicker.init(dateEl, {
-    format: "yyyy-mm-dd",
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true,
-  });
-</script>
-{% endblock %}
+
+{% comment %} // {% endcomment %}
+<!-- This is all new markup to be added just above the <script> tag -->
+<hr />
+<div class="row">
+  <div class="col s6">
+    <h3>{{ plane.name }}'s Pilots</h3>
+    {% if plane.pilots.count %} {% for toy in plane.pilots.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title"> {{ pilot.name }} </span>
+      </div>
+      <div class="card-action">
+        <form action="{% url 'unassoc_toy' cat.id toy.id %}" method="DELETE">
+          {% csrf_token %}
+          <button type="submit" class="btn">Delete</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>No Pilots</h5>
+    {% endif %}
+  </div>
+  <!-- Available toys will come after this line -->
+  <div class="col s6">
+    <h3>Available Pilots</h3>
+    {% if pilots.count %} {% for pilot in pilots.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title"> {{ pilot.name }} </span>
+      </div>
+      <div class="card-action">
+        <form action="{% url 'assoc_toy' cat.id toy.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Add</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>{{plane.name}} Already Has All Pilots Available</h5>
+    {% endif %}
+  </div>
+
+  <script>
+    const dateEl = document.getElementById("id_date");
+    // M is Materialize's global variable
+    M.Datepicker.init(dateEl, {
+      format: "yyyy-mm-dd",
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true,
+    });
+  </script>
+  {% endblock %}
+</div>

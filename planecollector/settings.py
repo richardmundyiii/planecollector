@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'planecollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'richardmundyiii/planecollector3',
+        'NAME': 'richardmundyiii/planecollector7',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PW'],
         'HOST': 'db.bit.io',
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
